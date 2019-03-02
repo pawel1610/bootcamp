@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class AboutController {
-    @RequestMapping(value = "/o-nas", method = RequestMethod.GET)
-    public String getAbout(){
-        return "about";
+public class CoursesController {
+    @RequestMapping(value = "/kursy", method = RequestMethod.GET)
+    public String getCourses(){
+        return "courses";
     }
 }
