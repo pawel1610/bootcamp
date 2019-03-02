@@ -9,6 +9,12 @@ public class ContactController {
 
     @RequestMapping(value = "/kontakt", method = RequestMethod.GET)
     public String getContact(){
+
         return "contact";
+    }
+
+    @RequestMapping(value = "/wyslano", method = RequestMethod.GET)
+    public String getMessage(){
+        return "wyslano";
     }
 }

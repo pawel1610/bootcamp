@@ -8,5 +8,12 @@
     <header th:replace="fragments/header :: menu"></header>
     <h2>Kontakt</h2>
 
+    <form action="/wyslano">
+        <label>Imie</label> <input type="text" name="imie" /><br>
+        <label>Nazwisko</label> <input type="text" name="nazwisko" /><br>
+        <label>Wiadomosc</label> <textarea  name="wiadomosc"></textarea><br>
+        <input type="submit" value="wyślij"/>
+    </form>
+
 </body>
 </html>

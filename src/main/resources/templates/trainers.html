@@ -8,5 +8,9 @@
     <header th:replace="fragments/header :: menu"></header>
     <h2>Trenerzy</h2>
 
+    <ul>
+        <li th:each="trainer: ${trainersList}" th:text="${trainer.name}+ ' ' + ${trainer.lastName}"> </li>
+    </ul>
+
 </body>
 </html>

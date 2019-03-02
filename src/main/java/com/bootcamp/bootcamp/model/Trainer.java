@@ -1,9 +1,11 @@
 package com.bootcamp.bootcamp.model;
 
 public class Trainer {
+    private int id;
     private String name;
     private String lastName;
-    private int rate;
+    private int sallary;
+    private String description;
 
     public String getName() {
         return name;
@@ -21,11 +23,36 @@ public class Trainer {
         this.lastName = lastName;
     }
 
-    public int getRate() {
-        return rate;
+    public int getSallary() {
+        return sallary;
     }
 
-    public void setRate(int rate) {
-        this.rate = rate;
+    public void setSallary(int sallary) {
+        this.sallary = sallary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Trainer{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", sallary=" + sallary +
+                '}';
     }
 }
