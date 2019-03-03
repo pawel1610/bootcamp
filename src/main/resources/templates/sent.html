@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Wysłano</title>
 </head>
 <body>
-
-<p>dziekujemy, wyslano!</p>
+    <header th:replace="fragments/header :: menu"></header>
+    <h1><span th:text="${firstName}"></span> dziekujemy, wyslano wiadomosc o treści "<span th:text="${message}"></span>"</h1>
 
 </body>
 </html>

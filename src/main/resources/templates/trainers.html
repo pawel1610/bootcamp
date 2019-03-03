@@ -9,7 +9,9 @@
     <h2>Trenerzy</h2>
 
     <ul>
-        <li th:each="trainer: ${trainersList}" th:text="${trainer.name}+ ' ' + ${trainer.lastName}"> </li>
+        <li th:each="trainer: ${trainersList}">
+            <a th:href="'trenerzy/'+${trainer.id}" th:text="${trainer.name}+ ' ' + ${trainer.lastName}" ></a>
+        </li>
     </ul>
 
 </body>
