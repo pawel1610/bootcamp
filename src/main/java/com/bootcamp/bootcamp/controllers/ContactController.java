@@ -1,30 +1,27 @@
 package com.bootcamp.bootcamp.controllers;
 
+import com.bootcamp.bootcamp.model.Contact;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ContactController {
 
     @RequestMapping(value = "/kontakt", method = RequestMethod.GET)
-    public String getContact(){
+    public String contact(Model model){
+        Contact contact = new Contact();
+        model.addAttribute(contact);
+//        model.addAttribute("sentMessage", false);
         return "contact";
     }
 
-    @RequestMapping(value = "/wyslano", method = RequestMethod.GET)
-    public String getMessage(@RequestParam(name = "imie", defaultValue = "Nieznajomy") String firstName,
-                             @RequestParam(name = "nazwisko", defaultValue = "Nieznajomy") String lastName,
-                             @RequestParam(name = "wiadomosc") String message,
-                             Model model){
-
-        model.addAttribute("firstName", firstName);
-        model.addAttribute("lastName", lastName);
-        model.addAttribute("message", message);
-        return "sent";
+    @RequestMapping(value = "/wyslano", method = RequestMethod.POST)
+    public String getMessage(@ModelAttribute Contact contact,Model model){  // @ModelAttribute lapiemy caly model z formularza
+        model.addAttribute("sentMessage", true);
+        return "contact";
     }
+
 
 
 }

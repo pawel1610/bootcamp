@@ -8,12 +8,16 @@
     <header th:replace="fragments/header :: menu"></header>
     <h2>Kontakt</h2>
 
-    <form action="/wyslano">
-        <label>Imie</label> <input type="text" name="imie" /><br>
-        <label>Nazwisko</label> <input type="text" name="nazwisko" /><br>
-        <label>Wiadomosc</label> <textarea  name="wiadomosc"></textarea><br>
-        <input type="submit" value="wyślij"/>
-    </form>
+    <span th:if="${sentMessage}"> wiadomosc została wysłana </span><br>
 
+    <form th:action="@{/wyslano}" th:object="${contact}" method="post">
+        <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}" /><br>
+        <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}" /><br>
+        <label for="email">email  </label> <input id="email" type="email" th:field="*{email}" /><br>
+        <label for="message">Wiadomosc</label> <textarea id="message" cols="30" rows="10" th:field="*{message}"></textarea><br>
+        <input type="submit" value="wyślij"/>
+
+    </form>
+    <footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
