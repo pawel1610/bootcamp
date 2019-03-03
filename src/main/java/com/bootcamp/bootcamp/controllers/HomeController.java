@@ -18,8 +18,8 @@ public class HomeController {
                           Model model) {
 //        System.out.println("Witaj " + firstName + " " + lastName + " wiek " + wiek);
 //        if (wiek>20){return "redirect:o-nas";//przekierowanie na inna strone
-        // return "forward:o-nas";//przekierowanie na inna strone,ale nie zmienia sie adres
-//    }
+//         return "forward:o-nas";//przekierowanie na inna strone,ale nie zmienia sie adres
+////    }
 
         model.addAttribute("firstName", firstName);
         model.addAttribute("lastName", lastName);

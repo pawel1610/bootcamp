@@ -1,7 +1,16 @@
 package com.bootcamp.bootcamp.model;
 
-public class Trainer {
-    private int id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Trainer{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
     private String lastName;
     private int sallary;
@@ -31,11 +40,11 @@ public class Trainer {
         this.sallary = sallary;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -49,10 +58,7 @@ public class Trainer {
 
     @Override
     public String toString() {
-        return "Trainer{" +
-                "name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", sallary=" + sallary +
-                '}';
+        return "Trener " + name + " " +
+                lastName + " zarabia " + sallary ;
     }
 }
