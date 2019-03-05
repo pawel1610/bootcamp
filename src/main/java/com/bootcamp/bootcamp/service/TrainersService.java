@@ -33,6 +33,16 @@ public class TrainersService {
         trainerRepository.save(trainer);
     }
 
+    public Trainer getTrainerToEdit(Long id){
+        Optional<Trainer> trainerOptional= trainerRepository.findById(id);
+        Trainer trainerToEdit = trainerOptional.get();
+        return trainerToEdit;
+    }
+
+    public void deletTrainer(Long id){
+        trainerRepository.deleteById(id);
+    }
+
 
 
 

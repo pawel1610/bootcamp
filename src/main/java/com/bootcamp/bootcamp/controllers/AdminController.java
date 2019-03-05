@@ -29,15 +29,49 @@ public class AdminController {
     public String getAddTrainer(Model model){
         Trainer trainer = new Trainer();
         model.addAttribute(trainer);
-        return "addTrainer";
+        return "addNewTrainer";
     }
 
-    @PostMapping("/addedTrainer")
+    @PostMapping("/saveAddedTrainer")
     public String saveTrainer(@ModelAttribute Trainer trainer,Model model){
+        System.out.println(trainer.getId());
         trainersService.saveTrainer(trainer);
         model.addAttribute("trainerIsAdded", true);
         model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName()); /// zdublowana funkcja ???????????
 //        return "redirect:trenerzy";
         return "trainersAdmin";
     }
+    @GetMapping("/editTrainer")
+    public String editTrainer(@RequestParam(name = "id") Long id,Model model){
+        Trainer trainer = trainersService.getTrainerToEdit(id);
+        model.addAttribute(trainer);
+        System.out.println(trainer.getId());
+        return "modyfiTrainer";
+    }
+    @RequestMapping(value = "/saveModifiedTrainer", method = {RequestMethod.GET, RequestMethod.POST})
+    public String saveModifiedTrainer(@ModelAttribute Trainer trainer,@RequestParam(name = "id") Long id, Model model){
+        System.out.println(id);
+        Trainer trainerToModyfi = trainersService.getTrainerToEdit(id);
+        trainerToModyfi.setName(trainer.getName());
+        trainerToModyfi.setLastName(trainer.getLastName());
+        trainerToModyfi.setDescription(trainer.getDescription());
+        trainerToModyfi.setSallary(trainer.getSallary());
+        trainersService.saveTrainer(trainerToModyfi);
+        model.addAttribute("trainerIsChanged", true);
+        model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName()); /// zdublowana funkcja ???????????
+//        return "redirect:trenerzy";
+        return "trainersAdmin";
+    }
+
+    @GetMapping("/deleteTrainer")
+    public String deleteTrainer(@RequestParam(name = "id") Long id,Model model){
+        trainersService.deletTrainer(id);
+        model.addAttribute("trainerIsDeleted", true);
+        model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName()); /// zdublowana funkcja ???????????
+//        return "redirect:trenerzy";
+        return "trainersAdmin";
+    }
+
+
+
 }

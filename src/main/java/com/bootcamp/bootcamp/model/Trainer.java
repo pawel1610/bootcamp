@@ -64,4 +64,5 @@ public class Trainer{
                 lastName + " zarabia " + sallary ;
     }
 
+
 }
