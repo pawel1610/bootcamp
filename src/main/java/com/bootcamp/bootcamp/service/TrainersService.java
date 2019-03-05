@@ -22,13 +22,15 @@ public class TrainersService {
 
     public Optional<Trainer> showTrainrerById(long id){
         return trainerRepository.findById(id);
-
     }
 
     public List<Trainer> getTrainersSortedByLastName(){
         List<Trainer> trainerListSortedByLastName = trainerRepository.findAllByOrderByLastNameAsc();
-
         return trainerListSortedByLastName;
+    }
+
+    public void saveTrainer(Trainer trainer){
+        trainerRepository.save(trainer);
     }
 
 

@@ -8,7 +8,10 @@
 <body>
 <header th:replace="fragments/header :: menuAdmin"></header>
 
-<p style="border: solid 1px; width: 70px; color: red;">Dodaj trenera</p>
+<span th:if="${trainerIsAdded}"> Dodano Trenera </span><br>
+<span th:if="${trainerIsChanged}"> Zmieniono Trenera </span><br>
+<span th:if="${trainerIsDeleted}"> Usunieto Trenera </span><br>
+<a  href="/admin/addTrainer">Dodaj trenera</a>
 
 <table border="1" style="width:300px">
     <tr>
