@@ -2,12 +2,13 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>O nas</title>
+    <title>PanelAdmina</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <header th:replace="fragments/header :: menu"></header>
-    <h2>Strona o nas</h2>
-    <footer th:replace="fragments/footer :: footer"></footer>
+<header th:replace="fragments/header :: menuAdmin"></header>
+<h1>Jesteś w panelu Admina</h1>
+
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

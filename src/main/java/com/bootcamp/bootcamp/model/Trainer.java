@@ -1,5 +1,7 @@
 package com.bootcamp.bootcamp.model;
 
+import org.springframework.data.domain.Sort;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -61,4 +63,5 @@ public class Trainer{
         return "Trener " + name + " " +
                 lastName + " zarabia " + sallary ;
     }
+
 }

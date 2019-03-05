@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>trenerzyAdmina</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="fragments/header :: menuAdmin"></header>
+
+<p style="border: solid 1px; width: 70px; color: red;">Dodaj trenera</p>
+
+<table border="1" style="width:300px">
+    <tr>
+        <td>Imie</td>
+        <td>Nazwisko</td>
+        <td>Stawka</td>
+        <td></td>
+    </tr>
+    <tr th:each="trainer : ${trainersListSortedByLastName}">
+        <td>
+            <span th:text="${trainer.name}"></span>
+        </td>
+        <td>
+            <span th:text="${trainer.lastName}"></span>
+        </td>
+        <td>
+            <span th:text="${trainer.sallary}"></span>
+        </td>
+        <td>
+            <p>edytuj</p>
+            <p>usun</p>
+        </td>
+    </tr>
+</table>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
