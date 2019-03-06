@@ -9,15 +9,12 @@
     <header th:replace="fragments/header :: menuAdmin"></header>
     <h2>Dodawanie Trenera</h2>
 
-
-
     <form th:action="@{/admin/saveAddedTrainer}" th:object="${trainer}" method="post">
         <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}" /><br>
         <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}" /><br>
         <label for="sallary">stawka</label> <input id="sallary" type="text" th:field="*{sallary}" /><br>
         <label for="description">opis</label> <input id="description" type="text" th:field="*{description}"></input><br>
         <input type="submit" value="zapisz"/>
-
     </form>
 
 <footer th:replace="fragments/footer :: footer"></footer>
