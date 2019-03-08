@@ -9,9 +9,8 @@
 <header th:replace="fragments/header :: menuAdmin"></header>
 <h2>Edycja Trenera</h2>
 
-
-
-<form th:action="@{/admin/saveModifiedTrainer(id=${trainer.id})}" th:object="${trainer}" method="post">
+<form th:action="@{/admin/saveModifiedTrainer}" th:object="${trainer}" method="post">
+    <input id="id" type="hidden" value="{trainer.id}" th:field="*{id}">
     <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}" /><br>
     <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}" /><br>
     <label for="sallary">stawka</label> <input id="sallary" type="text" th:field="*{sallary}" /><br>

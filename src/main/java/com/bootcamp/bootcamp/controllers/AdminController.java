@@ -48,15 +48,11 @@ public class AdminController {
         System.out.println(trainer.getId());
         return "modyfiTrainer";
     }
-    @RequestMapping(value = "/saveModifiedTrainer", method = {RequestMethod.GET, RequestMethod.POST})
-    public String saveModifiedTrainer(@ModelAttribute Trainer trainer,@RequestParam(name = "id") Long id, Model model){
-        System.out.println(id);
-        Trainer trainerToModyfi = trainersService.getTrainerToEdit(id);
-        trainerToModyfi.setName(trainer.getName());
-        trainerToModyfi.setLastName(trainer.getLastName());
-        trainerToModyfi.setDescription(trainer.getDescription());
-        trainerToModyfi.setSallary(trainer.getSallary());
-        trainersService.saveTrainer(trainerToModyfi);
+
+    @RequestMapping(value = "/saveModifiedTrainer", method = RequestMethod.POST)
+    public String saveModifiedTrainer(@ModelAttribute Trainer trainer, Model model)
+    {
+      trainersService.saveTrainer(trainer);
         model.addAttribute("trainerIsChanged", true);
         model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName()); /// zdublowana funkcja ???????????
 //        return "redirect:trenerzy";
