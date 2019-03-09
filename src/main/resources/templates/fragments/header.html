@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 
 <body>
     <nav th:fragment="menu"> <!--okreslamy ktory fragment ma byc wkljony w innych html'ach-->
@@ -9,13 +11,18 @@
             <li><a href="/trenerzy">Trenerzy</a></li>
             <li><a href="/kursy">Kursy</a></li>
             <li><a href="/kontakt">Kontakt</a></li>
+            <li><a href="/admin">Panel Administratora</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a></li>
+            <!--<li th:block="${#authentication.name}"><a href="/">Wyloguj</a></li>-->
         </ul>
     </nav>
 
-    <nav th:fragment="menuAdmin"> <!--okreslamy ktory fragment ma byc wkljony w innych html'ach-->
+    <nav th:fragment="menuAdmin"> <!--okreslamy ktory fragment ma byc wklejony w innych html'ach-->
         <ul >
             <li><a href="/admin">Panel Admin</a></li>
             <li><a href="/admin/trenerzy">Trenerzy</a></li>
+            <li><a href="/">Menu glowne</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a></li>
         </ul>
     </nav>
 
