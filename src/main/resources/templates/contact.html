@@ -12,7 +12,12 @@
     <span th:if="${sentMessage}"> wiadomosc została wysłana </span><br>
 
     <form th:action="@{/wyslano}" th:object="${contact}" method="post">
+        <!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>-->
+        <p th:if="${#fields.hasErrors('name')}" class="error" >Podaj imie</p>
+        <!--<p th:errors="*{name}"></p>-->
         <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}" /><br>
+
+        <p th:errors="*{lastName}" class="error"></p>
         <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}" /><br>
         <label for="email">email  </label> <input id="email" type="email" th:field="*{email}" /><br>
         <label for="message">Wiadomosc</label> <textarea id="message" cols="30" rows="10" th:field="*{message}"></textarea><br>

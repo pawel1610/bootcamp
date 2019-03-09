@@ -1,5 +1,9 @@
 package com.bootcamp.bootcamp.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Sort;
 
 import javax.persistence.Entity;
@@ -8,6 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Trainer{
 
     @Id
@@ -18,45 +27,7 @@ public class Trainer{
     private int sallary;
     private String description;
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getSallary() {
-        return sallary;
-    }
-
-    public void setSallary(int sallary) {
-        this.sallary = sallary;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @Override
     public String toString() {
