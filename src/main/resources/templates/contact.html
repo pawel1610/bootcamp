@@ -16,7 +16,6 @@
         <p th:if="${#fields.hasErrors('name')}" class="error" >Podaj imie</p>
         <!--<p th:errors="*{name}"></p>-->
         <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}" /><br>
-
         <p th:errors="*{lastName}" class="error"></p>
         <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}" /><br>
         <label for="email">email  </label> <input id="email" type="email" th:field="*{email}" /><br>
