@@ -32,11 +32,14 @@ public class AdminController {
         return "addNewTrainer";
     }
 
-    @PostMapping("/saveAddedTrainer")
+    @PostMapping("/saveTrainer")
     public String saveTrainer(@ModelAttribute Trainer trainer,Model model){
-        System.out.println(trainer.getId());
+        if(trainer.getId()> 0){
+            model.addAttribute("trainerIsChanged", true);
+        }else {
+            model.addAttribute("trainerIsAdded", true);
+        }
         trainersService.saveTrainer(trainer);
-        model.addAttribute("trainerIsAdded", true);
         model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName()); /// zdublowana funkcja ???????????
 //        return "redirect:trenerzy";
         return "trainersAdmin";
@@ -45,18 +48,7 @@ public class AdminController {
     public String editTrainer(@RequestParam(name = "id") Long id,Model model){
         Trainer trainer = trainersService.getTrainerToEdit(id);
         model.addAttribute(trainer);
-        System.out.println(trainer.getId());
-        return "modyfiTrainer";
-    }
-
-    @RequestMapping(value = "/saveModifiedTrainer", method = RequestMethod.POST)
-    public String saveModifiedTrainer(@ModelAttribute Trainer trainer, Model model)
-    {
-      trainersService.saveTrainer(trainer);
-        model.addAttribute("trainerIsChanged", true);
-        model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName()); /// zdublowana funkcja ???????????
-//        return "redirect:trenerzy";
-        return "trainersAdmin";
+        return "addNewTrainer";
     }
 
     @GetMapping("/deleteTrainer")
