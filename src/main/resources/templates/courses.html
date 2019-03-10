@@ -6,8 +6,54 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div id="main">
     <header th:replace="fragments/header :: menu"></header>
-        <h2>Kursy</h2>
+    <h1>Lista kursów</h1>
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th>Data Rozpoczecia</th>
+            <th>Data Zakonczenia</th>
+            <th>Cena</th>
+            <th>Tryb</th>
+            <th>Staus</th>
+            <th></th>
+
+        </tr>
+        <tr th:each="courseEdition : ${courseEditionList}">
+            <td>
+                <span th:text="${courseEdition.course.name}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.course.description}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.startDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.endDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.price}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.courseMode.name}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>
+
+            </td>
+            <td>
+                <a th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS
+                    NA
+                    KURS</a>
+            </td>
+        </tr>
+    </table>
     <footer th:replace="fragments/footer :: footer"></footer>
+</div>
 </body>
+
+
 </html>

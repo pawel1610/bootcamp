@@ -6,46 +6,49 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<header th:replace="fragments/header :: menuAdmin"></header>
+<div id="main">
+    <header th:replace="fragments/header :: menuAdmin"></header>
+    <h1>Edycje Kursów</h1>
 
-<span th:if="${courseEditionIsAdded}"> Dodano Edycję Kursu </span><br>
-<span th:if="${courseEditionIsChanged}"> Zmieniono Edycję Kursu </span><br>
-<a  href="/admin/addCourseEdition">Dodaj edycje kursu</a>
-<table border="1" style="width:300px">
-    <tr>
-        <td>Nazwa</td>
-        <td>Data Rozpoczecia</td>
-        <td>Data Zakonczenia</td>
-        <td>Cena</td>
-        <td>Liczba miejsc</td>
-        <td>Tryb</td>
-        <td></td>
-    </tr>
-    <tr th:each="courseEdition : ${courseEditionList}">
-        <td>
-            <span th:text="${courseEdition.course.name}"></span>
-        </td>
-        <td>
-            <span th:text="${courseEdition.startDate}"></span>
-        </td>
-        <td>
-            <span th:text="${courseEdition.endDate}"></span>
-        </td>
-        <td>
-            <span th:text="${courseEdition.price}"></span>
-        </td>
-        <td>
-            <span th:text="${courseEdition.membersLimit}"></span>
-        </td>
-        <td>
-            <span th:text="${courseEdition.courseMode.name}"></span>
-        </td>
-        <td>
-            <a th:href="@{editCourseEdition(id=${courseEdition.id})}" method="get">edytuj</a>
-        </td>
-    </tr>
-</table>
+    <span th:if="${courseEditionIsAdded}"> Dodano Edycję Kursu </span><br>
+    <span th:if="${courseEditionIsChanged}"> Zmieniono Edycję Kursu </span><br>
+    <a href="/admin/addCourseEdition">Dodaj edycje kursu</a>
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Data Rozpoczecia</th>
+            <th>Data Zakonczenia</th>
+            <th>Cena</th>
+            <th>Liczba miejsc</th>
+            <th>Tryb</th>
+            <th></th>
+        </tr>
+        <tr th:each="courseEdition : ${courseEditionList}">
+            <td>
+                <span th:text="${courseEdition.course.name}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.startDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.endDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.price}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.membersLimit}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.courseMode.name}"></span>
+            </td>
+            <td>
+                <a th:href="@{editCourseEdition(id=${courseEdition.id})}" method="get">edytuj</a>
+            </td>
+        </tr>
+    </table>
 
-<footer th:replace="fragments/footer :: footer"></footer>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
 </body>
 </html>

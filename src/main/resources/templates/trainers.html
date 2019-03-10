@@ -6,8 +6,9 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div id="main">
     <header th:replace="fragments/header :: menu"></header>
-    <h2>Trenerzy</h2>
+    <h1>Trenerzy</h1>
 
     <ul>
         <li th:each="trainer: ${trainersList}">
@@ -15,5 +16,6 @@
         </li>
     </ul>
     <footer th:replace="fragments/footer :: footer"></footer>
+</div>
 </body>
 </html>

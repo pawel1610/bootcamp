@@ -6,37 +6,40 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<header th:replace="fragments/header :: menuAdmin"></header>
+<div id="main">
+    <header th:replace="fragments/header :: menuAdmin"></header>
+    <h1>Trenerzy</h1>
 
-<span th:if="${trainerIsAdded}"> Dodano Trenera </span><br>
-<span th:if="${trainerIsChanged}"> Zmieniono Trenera </span><br>
-<span th:if="${trainerIsDeleted}"> Usunieto Trenera </span><br>
-<a  href="/admin/addTrainer">Dodaj trenera</a>
+    <span th:if="${trainerIsAdded}"> Dodano Trenera </span><br>
+    <span th:if="${trainerIsChanged}"> Zmieniono Trenera </span><br>
+    <span th:if="${trainerIsDeleted}"> Usunieto Trenera </span><br>
+    <a href="/admin/addTrainer">Dodaj trenera</a>
 
-<table border="1" style="width:300px">
-    <tr>
-        <td>Imie</td>
-        <td>Nazwisko</td>
-        <td>Stawka</td>
-        <td></td>
-    </tr>
-    <tr th:each="trainer : ${trainersListSortedByLastName}">
-        <td>
-            <span th:text="${trainer.name}"></span>
-        </td>
-        <td>
-            <span th:text="${trainer.lastName}"></span>
-        </td>
-        <td>
-            <span th:text="${trainer.salary}"></span>
-        </td>
-        <td>
-            <a th:href="@{editTrainer(id=${trainer.id})}" method="get">edytuj</a>
-            <a th:href="@{deleteTrainer(id=${trainer.id})}" method="get">usun</a>
-        </td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Stawka</th>
+            <th></th>
+        </tr>
+        <tr th:each="trainer : ${trainersListSortedByLastName}">
+            <td>
+                <span th:text="${trainer.name}"></span>
+            </td>
+            <td>
+                <span th:text="${trainer.lastName}"></span>
+            </td>
+            <td>
+                <span th:text="${trainer.salary}"></span>
+            </td>
+            <td>
+                <a th:href="@{editTrainer(id=${trainer.id})}" method="get">edytuj</a>
+                <a th:href="@{deleteTrainer(id=${trainer.id})}" method="get">usun</a>
+            </td>
+        </tr>
+    </table>
 
-<footer th:replace="fragments/footer :: footer"></footer>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
 </body>
 </html>

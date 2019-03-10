@@ -6,9 +6,11 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<header th:replace="fragments/header :: menuAdmin"></header>
-<h1>Jesteś w panelu Admina</h1>
+<div id="main">
+    <header th:replace="fragments/header :: menuAdmin"></header>
+    <h1>Jesteś w panelu Admina</h1>
 
-<footer th:replace="fragments/footer :: footer"></footer>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
 </body>
 </html>

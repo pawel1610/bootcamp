@@ -6,8 +6,9 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<div id="main">
     <header th:replace="fragments/header :: menuAdmin"></header>
-    <h2>Dodawanie Trenera</h2>
+    <h1>Dodawanie Trenera</h1>
 
     <form th:action="@{/admin/saveTrainer}" th:object="${trainer}" method="post">
 
@@ -15,17 +16,23 @@
 
         <input id="id" type="hidden" th:field="*{id}">
         <!--<p th:errors="*{name}" class="error"></p>-->
-        <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}" th:class=${#fields.hasErrors('name')}?error/><br> <!-- zamiast th:class mzoe byc th:class append ktory dodaje kolejna klase-->
+        <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}"
+                                              th:class=${#fields.hasErrors('name')}?error/><br>
+        <!-- zamiast th:class mzoe byc th:class append ktory dodaje kolejna klase-->
         <!--<p th:errors="*{lastName}" class="error"></p>-->
-        <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}" th:class=${#fields.hasErrors('lastName')}?error /><br>
+        <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}"
+                                                      th:class=${#fields.hasErrors('lastName')}?error/><br>
         <!--<p th:errors="*{salary}" class="error"></p>-->
-        <label for="salary">stawka</label> <input id="salary" type="text" th:field="*{salary}" th:class=${#fields.hasErrors('salary')}?error /><br>
+        <label for="salary">stawka</label> <input id="salary" type="text" th:field="*{salary}"
+                                                  th:class=${#fields.hasErrors('salary')}?error/><br>
         <!--<p th:errors="*{description}" class="error"></p>-->
-        <label for="description">opis</label> <textarea id="description" cols="30" rows="10" th:field="*{description}" th:class=${#fields.hasErrors('description')}?error></textarea>
+        <label for="description">opis</label> <textarea id="description" cols="30" rows="10" th:field="*{description}"
+                                                        th:class=${#fields.hasErrors('description')}?error></textarea>
         <input type="submit" value="zapisz"/>
     </form>
 
-<footer th:replace="fragments/footer :: footer"></footer>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
 </body>
 </html>
 
