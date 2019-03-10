@@ -19,8 +19,10 @@
 
     <nav th:fragment="menuAdmin"> <!--okreslamy ktory fragment ma byc wklejony w innych html'ach-->
         <ul >
-            <li><a href="/admin">Panel Admin</a></li>
+            <!--<li><a href="/admin">Panel Admin</a></li>-->
             <li><a href="/admin/trenerzy">Trenerzy</a></li>
+            <li><a href="/admin/kursy">Kursy</a></li>
+            <li><a href="/admin/edycjeKursow">Edycje Kursów</a></li>
             <li><a href="/">Menu glowne</a></li>
             <li sec:authorize="isAuthenticated()"><a href="/logout">Wyloguj</a></li>
         </ul>

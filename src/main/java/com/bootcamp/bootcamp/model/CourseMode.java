@@ -12,26 +12,19 @@ import java.util.List;
 @Entity
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+public class CourseMode {
 
-
-public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotBlank
+    @Column(unique = true)
     private String name;
-
-    @NotBlank
-    private String description;
-
-    @NotBlank
-    private String technology;
 
     @OneToMany
     private List<CourseEdition> editions;
-
 
 }
