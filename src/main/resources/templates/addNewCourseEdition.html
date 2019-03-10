@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowa Edycja Kursu</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="fragments/header :: menuAdmin"></header>
+<h2>Dodawanie nowej edycji Kursu</h2>
+
+
+
+<form th:action="@{/admin/saveCourseEdition}" th:object="${courseEdition}"  method="post">
+
+    <p th:errors="*" class="error" th:errorclass="form-field-error"></p>  <!-- wyswietlenie wszystkich bledow-->
+
+    <input id="id" type="hidden" th:field="*{id}">
+
+
+    <label for="course">Kurs</label>
+    <select th:field="*{course}"id="course">
+        <option th:each="course : ${courseList}" th:value="${course.id}" th:text= "${course.name}"></option>
+    </select><br>
+
+
+    <label for="startDate">Data rozpoczecia</label> <input id="startDate" type="date" th:field="*{startDate}" th:class=${#fields.hasErrors('startDate')}?error/><br>
+    <label for="endDate">Data zakonczenia</label> <input id="endDate" type="date" th:field="*{endDate}" th:class=${#fields.hasErrors('endDate')}?error/><br>
+    <label for="price">Cena</label> <input id="price" type="number" th:field="*{price}" th:class=${#fields.hasErrors('price')}?error/><br>
+    <label for="membersLimit">Ilosc miejsc</label> <input id="membersLimit" type="number" th:field="*{membersLimit}" th:class=${#fields.hasErrors('membersLimit')}?error/><br>
+
+    <label for="mode">Tryb</label>
+    <select th:field="*{courseMode}"id="mode">
+        <option th:each="courseMode : ${courseModeList}" th:value="${courseMode.id}" th:text= "${courseMode.name}"></option>
+    </select><br>
+
+
+    <input type="submit" value="zapisz"/>
+</form>
+
+
+
+
+
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

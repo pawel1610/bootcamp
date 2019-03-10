@@ -2,7 +2,10 @@ package com.bootcamp.bootcamp.controllers;
 
 
 import com.bootcamp.bootcamp.model.Course;
+import com.bootcamp.bootcamp.model.CourseEdition;
 import com.bootcamp.bootcamp.model.Trainer;
+import com.bootcamp.bootcamp.service.CourseEditionService;
+import com.bootcamp.bootcamp.service.CourseModeService;
 import com.bootcamp.bootcamp.service.CourseService;
 import com.bootcamp.bootcamp.service.TrainersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,12 @@ public class AdminController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private CourseEditionService courseEditionService;
+
+    @Autowired
+    private CourseModeService courseModeService;
 
     @GetMapping("")
     public String getAdmin() {
@@ -117,5 +126,52 @@ public class AdminController {
         model.addAttribute(course);
         return "addNewCourse";
     }
+
+    @GetMapping("/edycjeKursow")
+    public String getCourseEditionAdmin(Model model) {
+        model.addAttribute("courseEditionList", courseEditionService.getAllCourseEdition());
+        return "courseEditionAdmin";
+    }
+
+    @GetMapping("/addCourseEdition")
+    public String getAddCourseEdition(Model model) {
+        CourseEdition courseEdition = new CourseEdition();
+        model.addAttribute(courseEdition);
+        model.addAttribute("courseModeList", courseModeService.getAllCourseMode());
+        model.addAttribute("courseList", courseService.getAllCourses());
+        return "addNewCourseEdition";
+    }
+
+    @PostMapping("/saveCourseEdition")
+    public String saveCourseEdition(@Valid @ModelAttribute CourseEdition courseEdition, BindingResult bindingResulat, Model model) {
+        if (bindingResulat.hasErrors()) {
+            List<ObjectError> errors = bindingResulat.getAllErrors();
+            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+            model.addAttribute("courseModeList", courseModeService.getAllCourseMode());
+            model.addAttribute("courseList", courseService.getAllCourses());
+            return "addNewCourseEdition";
+        } else {
+            if (courseEdition.getId() > 0) {
+                model.addAttribute("courseEditionIsChanged", true);
+            } else {
+                model.addAttribute("courseEditionIsAdded", true);
+            }
+
+            courseEditionService.saveCourseEdition(courseEdition);
+            model.addAttribute("courseEditionList", courseEditionService.getAllCourseEdition());
+            return "courseEditionAdmin";
+        }
+
+    }
+
+    @GetMapping("/editCourseEdition")
+    public String editCourseEdition(@RequestParam(name = "id") Long id, Model model) {
+        CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
+        model.addAttribute(courseEdition);
+        model.addAttribute("courseModeList", courseModeService.getAllCourseMode());
+        model.addAttribute("courseList", courseService.getAllCourses());
+        return "addNewCourseEdition";
+    }
+
 
 }

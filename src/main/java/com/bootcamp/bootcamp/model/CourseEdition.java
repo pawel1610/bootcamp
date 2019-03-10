@@ -5,9 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
 
@@ -24,12 +27,15 @@ public class CourseEdition {
 
     @JoinColumn(name = "course_id")
     @ManyToOne
+    @NotNull
     private Course course; // tzw klucz obcy
 
-    @NotBlank
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
-    @NotBlank
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     @Positive
@@ -40,9 +46,23 @@ public class CourseEdition {
 
     @ManyToOne
     @JoinColumn(name = "courseMode_id")
+    @NotNull
     private CourseMode courseMode; // tzw klucz obcy
 
 
     private boolean active;
 
+    @Override
+    public String toString() {
+        return "CourseEdition{" +
+                "id=" + id +
+                ", course=" + course +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", price=" + price +
+                ", membersLimit=" + membersLimit +
+                ", courseMode=" + courseMode +
+                ", active=" + active +
+                '}';
+    }
 }
