@@ -49,6 +49,11 @@ public class CourseEdition {
     @NotNull
     private CourseMode courseMode; // tzw klucz obcy
 
+    @ManyToOne
+    @JoinColumn(name = "trainer_id")
+    @NotNull
+    private Trainer trainer;
+
 
     private boolean active;
 

@@ -21,10 +21,11 @@
 <nav th:fragment="menuAdmin"> <!--okreslamy ktory fragment ma byc wklejony w innych html'ach-->
 
     <!--<li><a href="/admin">Panel Admin</a></li>-->
+
+    <a href="/">Menu glowne</a>
     <a href="/admin/trenerzy">Trenerzy</a>
     <a href="/admin/kursy">Kursy</a>
     <a href="/admin/edycjeKursow">Edycje Kursów</a>
-    <a href="/">Menu glowne</a>
     <span sec:authorize="isAuthenticated()"></span><a href="/logout">Wyloguj</a>
 
 </nav>

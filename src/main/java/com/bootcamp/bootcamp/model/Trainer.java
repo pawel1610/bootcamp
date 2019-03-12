@@ -33,7 +33,7 @@ public class Trainer{
     @NotEmpty (message = "{com.bootcamp.bootcamp.model.Trainer.lastName.NotEmpty}")
     private String lastName;
 
-//    @NotEmpty
+
     @Min(value = 1, message = "{com.bootcamp.bootcamp.model.Trainer.salary.Min}")
     private int salary;
 
@@ -45,7 +45,7 @@ public class Trainer{
     @Override
     public String toString() {
         return "Trener " + name + " " +
-                lastName + " zarabia " + salary ;
+                lastName ;
     }
 
 

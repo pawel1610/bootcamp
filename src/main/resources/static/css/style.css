@@ -96,6 +96,14 @@ a {
 	text-decoration: none;
 	color:black;	
 }
+
+
+a img{
+	margin-left:25px;
+	hight:50px;
+	width:50px;
+		
+} 
 form {
 	width: 100%;
 	padding: 12px 20px;
