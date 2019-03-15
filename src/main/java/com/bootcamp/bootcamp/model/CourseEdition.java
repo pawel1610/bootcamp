@@ -57,8 +57,6 @@ public class CourseEdition {
 
     private boolean active;
 
-
-
     @Override
     public String toString() {
         return "CourseEdition{" +

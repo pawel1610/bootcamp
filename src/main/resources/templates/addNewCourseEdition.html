@@ -8,7 +8,7 @@
 <body>
 <div id="main">
     <header th:replace="fragments/header :: menuAdmin"></header>
-    <h1>Dodawanie nowej edycji Kursu</h1>
+    <h1>Dodawanie/edytowanie nowej edycji Kursu</h1>
 
 
     <form th:action="@{/admin/saveCourseEdition}" th:object="${courseEdition}" method="post">
@@ -38,6 +38,15 @@
             <option th:each="courseMode : ${courseModeList}" th:value="${courseMode.id}"
                     th:text="${courseMode.name}"></option>
         </select><br>
+
+        <label for="trainer">Trener prowadzący</label>
+        <select th:field="*{trainer}" id="trainer">
+            <option th:each="trainer : ${trainerList}" th:value="${trainer.id}"
+                    th:text="${trainer.name} + ' ' + ${trainer.lastName}"></option>
+        </select><br>
+
+        <label for="active">Rekrutacja jest aktywna</label>
+        <input id="active" type="checkbox" th:field="*{active}" ><br>
 
 
         <input type="submit" value="zapisz"/>

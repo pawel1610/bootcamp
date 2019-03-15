@@ -16,6 +16,7 @@
             <th>Data Rozpoczecia</th>
             <th>Data Zakonczenia</th>
             <th>Cena</th>
+            <th>Trener prowadzący</th>
             <th>Tryb</th>
             <th>Staus</th>
             <th></th>
@@ -38,16 +39,16 @@
                 <span th:text="${courseEdition.price}"></span>
             </td>
             <td>
+                <span th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></span>
+            </td>
+            <td>
                 <span th:text="${courseEdition.courseMode.name}"></span>
             </td>
             <td>
                 <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>
-
             </td>
             <td>
-                <a th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS
-                    NA
-                    KURS</a>
+                <a th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS</a>
             </td>
         </tr>
     </table>

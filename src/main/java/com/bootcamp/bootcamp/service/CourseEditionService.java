@@ -22,8 +22,7 @@ public class CourseEditionService {
         return courseEditionRepository.findAllByOrderByStartDate();
     }
 
-    public void saveCourseEdition(CourseEdition courseEdition){
-        courseEdition.setActive(true);
+    public void saveCourseEdition(CourseEdition courseEdition){//
         courseEditionRepository.save(courseEdition);
     }
 

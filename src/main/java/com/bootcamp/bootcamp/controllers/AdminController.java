@@ -137,6 +137,7 @@ public class AdminController {
     public String getAddCourseEdition(Model model) {
         CourseEdition courseEdition = new CourseEdition();
         model.addAttribute(courseEdition);
+        model.addAttribute("trainerList", trainersService.getTrainers());
         model.addAttribute("courseModeList", courseModeService.getAllCourseMode());
         model.addAttribute("courseList", courseService.getAllCourses());
         return "addNewCourseEdition";
@@ -147,6 +148,7 @@ public class AdminController {
         if (bindingResulat.hasErrors()) {
             List<ObjectError> errors = bindingResulat.getAllErrors();
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+            model.addAttribute("trainerList", trainersService.getTrainers());
             model.addAttribute("courseModeList", courseModeService.getAllCourseMode());
             model.addAttribute("courseList", courseService.getAllCourses());
             return "addNewCourseEdition";
@@ -168,6 +170,7 @@ public class AdminController {
     public String editCourseEdition(@RequestParam(name = "id") Long id, Model model) {
         CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
         model.addAttribute(courseEdition);
+        model.addAttribute("trainerList", trainersService.getTrainers());
         model.addAttribute("courseModeList", courseModeService.getAllCourseMode());
         model.addAttribute("courseList", courseService.getAllCourses());
         return "addNewCourseEdition";

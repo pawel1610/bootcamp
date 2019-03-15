@@ -20,7 +20,7 @@ body {
 #main {
 	max-width: 1000px;
 	margin: 0 auto 0 auto;
-	background-color: white;
+	background-color: white;	
 }
 
 nav {	
@@ -64,15 +64,14 @@ textarea.error {
 	border:1px solid red;
 }
 
-table {
-	width: 100%;
-	text-align:center;    
-    
-    padding: 25px;	
-    
+table {	
+	text-align:center; 
+    padding: 25px;
+	margin:0 auto;
 }
 th, td {
-  padding: 20px;
+  padding: 15px;
+  margin: 15px;
 }
 
 td	{
@@ -110,16 +109,15 @@ form {
 	margin: 8px 0;
 	box-sizing: border-box;
 }
-input,select {
+input ,select {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  resize: none; 
+  margin: 8px 0;  
+  border: 2px solid #ccc;  
+  background-color: #f8f8f8;  
 }
+
+
 
 textarea {
   width: 100%;

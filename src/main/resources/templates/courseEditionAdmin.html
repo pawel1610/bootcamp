@@ -23,6 +23,7 @@
             <th>Liczba miejsc</th>
             <th>Tryb</th>
             <th>Trener prowadzący</th>
+            <th>Staus</th>
             <th></th>
         </tr>
         <tr th:each="courseEdition : ${courseEditionList}">
@@ -46,6 +47,9 @@
             </td>
             <td>
                 <span th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>
             </td>
             <td>
                 <a th:href="@{editCourseEdition(id=${courseEdition.id})}" method="get">edytuj</a>
