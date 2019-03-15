@@ -46,7 +46,7 @@ public class CoursesController {
         if (blindingResult.hasErrors()) {
             List<ObjectError> errors = blindingResult.getAllErrors();
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
-            return "registeration";
+            return "/addNewUser";
         } else{
             userService.saveUser(user);
             model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());

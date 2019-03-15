@@ -15,14 +15,14 @@
         <p th:errors="*" class="error" th:errorclass="form-field-error"></p>  <!-- wyswietlenie wszystkich bledow-->
 
         <input id="id" type="hidden" th:field="*{id}">
-        <label for="name">Nazwa</label> <input id="name" type="text" th:field="*{name}"
+        <label for="name">Nazwa</label> <input id="name" type="text" placeholder="nazwa" th:field="*{name}"
                                                th:class=${#fields.hasErrors('name')}?error/><br>
         <!-- zamiast th:class mzoe byc th:class append ktory dodaje kolejna klase-->
         <!--<p th:errors="*{name}" class="error"></p>-->
-        <label for="description">opis</label> <textarea id="description" cols="30" rows="10" th:field="*{description}"
+        <label for="description">opis</label> <textarea id="description" placeholder="opis" cols="30" rows="10" th:field="*{description}"
                                                         th:class=${#fields.hasErrors('description')}?error></textarea>
         <!--<p th:errors="*{description}" class="error"></p>-->
-        <label for="technology">technologie</label> <input id="technology" type="text" th:field="*{technology}"
+        <label for="technology">technologie</label> <input id="technology" type="text" placeholder="technologie" th:field="*{technology}"
                                                            th:class=${#fields.hasErrors('technology')}?error/><br>
         <!--<p th:errors="*{salary}" class="error"></p>-->
         <input type="submit" value="zapisz"/>

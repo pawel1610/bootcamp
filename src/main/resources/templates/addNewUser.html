@@ -15,13 +15,13 @@
         <p th:errors="*" class="error" th:errorclass="form-field-error"></p>  <!-- wyswietlenie wszystkich bledow-->
 
         <input id="id" type="hidden" th:field="*{id}">
-        <label for="name">Imie</label> <input id="name" type="text" th:field="*{name}"
+        <label for="name">Imie</label> <input id="name" type="text" placeholder="imię" th:field="*{name}"
                                               th:class=${#fields.hasErrors('name')}?error/><br>
-        <label for="lastName">Nazwisko</label> <input id="lastName" type="text" th:field="*{lastName}"
+        <label for="lastName">Nazwisko</label> <input id="lastName" type="text" placeholder="nazwisko" th:field="*{lastName}"
                                                       th:class=${#fields.hasErrors('lastName')}?error/><br>
-        <label for="phone">Telefon</label> <input id="phone" type="text" th:field="*{phone}"
+        <label for="phone">Telefon</label> <input id="phone" type="text" placeholder="XXX-XXX-XXX" th:field="*{phone}"
                                                   th:class=${#fields.hasErrors('phone')}?error/><br>
-        <label for="email">email</label> <input id="email" type="email" th:field="*{email}"
+        <label for="email">email</label> <input id="email" type="email" placeholder="xxx@xxx.pl" th:field="*{email}"
                                                 th:class=${#fields.hasErrors('email')}?error/><br>
 
         <input type="submit" value="zapisz"/>

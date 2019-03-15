@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Kursy</title>
@@ -39,7 +39,13 @@
                 <span th:text="${courseEdition.price}"></span>
             </td>
             <td>
-                <span th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></span>
+                <a sec:authorize="isAuthenticated()" th:href="@{admin/editTrainer(id=${courseEdition.trainer.id})}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
+                <a sec:authorize="isAnonymous()" th:href="'trenerzy/'+${courseEdition.trainer.id}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
+
+                <!--<a th:href="$(sec:authorize='isAuthenticated()')?'@{admin/editTrainer(id=${courseEdition.trainer.id})}':''trenerzy/'+${courseEdition.trainer.id}'"-->
+                   <!--th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>-->
+
+
             </td>
             <td>
                 <span th:text="${courseEdition.courseMode.name}"></span>

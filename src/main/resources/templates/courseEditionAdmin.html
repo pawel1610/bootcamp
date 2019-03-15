@@ -46,7 +46,7 @@
                 <span th:text="${courseEdition.courseMode.name}"></span>
             </td>
             <td>
-                <span th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></span>
+                <a  th:href="@{editTrainer(id=${courseEdition.trainer.id})}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
             </td>
             <td>
                 <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>

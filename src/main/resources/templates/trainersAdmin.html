@@ -33,7 +33,7 @@
                 <span th:text="${trainer.salary}"></span>
             </td>
             <td>
-                <a th:href="@{editTrainer(id=${trainer.id})}" method="get">edytuj</a>
+                <a th:href="@{editTrainer(id=${trainer.id})}" method="get">edytuj</a><br>
                 <a th:href="@{deleteTrainer(id=${trainer.id})}" method="get">usun</a>
             </td>
         </tr>

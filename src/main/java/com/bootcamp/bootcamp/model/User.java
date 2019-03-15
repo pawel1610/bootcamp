@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 
@@ -28,7 +29,8 @@ public class User {
     private String lastName;
 
     @NotNull
-    private String phone; // format xxx-xxx-xxx
+    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{3})$")
+    private String phone;
 
     @Column(unique = true)
     public String email;
