@@ -10,8 +10,8 @@
     <header th:replace="fragments/header :: menuAdmin"></header>
     <h1>Kursy</h1>
 
-    <span th:if="${courseIsAdded}"> Dodano Kurs </span><br>
-    <span th:if="${courseIsChanged}"> Zmieniono Kurs </span><br>
+    <span class="confirmation" th:if="${courseIsAdded}"> Dodano Kurs </span><br>
+    <span class="confirmation" th:if="${courseIsChanged}"> Zmieniono Kurs </span><br>
     <a class="AddButton" href="/admin/addCourse"> <img src="https://cdn1.iconfinder.com/data/icons/ui-colored-1/100/UI__2-512.png" title="Dodaj kurs" alt="Dodaj kurs"> </a>
     <table>
         <tr>

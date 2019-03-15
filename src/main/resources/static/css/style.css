@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family:Source Sans Pro, arial;
+	fooooooooooont-family:Source Sans Pro, arial;
 	box-sizing: border-box;	
 }
 
@@ -14,17 +14,18 @@ body {
 	padding:0; 
 	margin:0;
 	position:relative;
-	background-color: dimgray;	
+	background-color: white;	
 }
 
 #main {
+	height:100%;
 	max-width: 1000px;
 	margin: 0 auto 0 auto;
 	background-color: white;	
 }
 
 nav {	
-	background-color: lightgray;
+background-color: lightgray;
 }
 
 nav a {
@@ -33,20 +34,30 @@ nav a {
 	padding: 10px;
 	color: black;
 	text-align: center;
-	text-decoration: none;
+	text-decoration: none;	
+}
+
+nav img{
+	width: -webkit-fill-available;	
 	
 }
 
 h1{
 	text-align: center;
 	margin: 10px 50px;
-	border-bottom: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;	
+	color: gray;
+}
+span.confirmation{
+	text-align: center;
+	margin: 10px 42%;	
+	color: green;
 }
 
 footer {
 	background-color: lightgray;
 	text-align: center;
-	padding: 10px;	
+	padding: 10px; 	
 }
 
 p.error {
@@ -65,13 +76,13 @@ textarea.error {
 }
 
 table {	
+	width: -webkit-fill-available;
 	text-align:center; 
     padding: 25px;
 	margin:0 auto;
 }
 th, td {
-  padding: 15px 5px;
-  margin: 15px;
+  padding: 15px 10px;  
 }
 
 td	{

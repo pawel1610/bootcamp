@@ -10,8 +10,8 @@
     <header th:replace="fragments/header :: menuAdmin"></header>
     <h1>Edycje Kursów</h1>
 
-    <span th:if="${courseEditionIsAdded}"> Dodano Edycję Kursu </span><br>
-    <span th:if="${courseEditionIsChanged}"> Zmieniono Edycję Kursu </span><br>
+    <span class="confirmation" th:if="${courseEditionIsAdded}"> Dodano Edycję Kursu </span><br>
+    <span class="confirmation" th:if="${courseEditionIsChanged}"> Zmieniono Edycję Kursu </span><br>
     <a class="AddButton" href="/admin/addCourseEdition"> <img src="https://cdn1.iconfinder.com/data/icons/ui-colored-1/100/UI__2-512.png" title="Dodaj edycje kurs" alt="Dodaj edycje kurs"></a>
 
     <table>

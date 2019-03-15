@@ -10,7 +10,7 @@
     <header th:replace="fragments/header :: menu"></header>
     <h1>Kontakt</h1>
 
-    <span th:if="${sentMessage}"> wiadomosc została wysłana </span><br>
+    <span class="confirmation" th:if="${sentMessage}"> wiadomosc została wysłana </span><br>
 
     <form th:action="@{/wyslano}" th:object="${contact}" method="post">
         <!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>-->

@@ -10,9 +10,9 @@
     <header th:replace="fragments/header :: menuAdmin"></header>
     <h1>Trenerzy</h1>
 
-    <span th:if="${trainerIsAdded}"> Dodano Trenera </span><br>
-    <span th:if="${trainerIsChanged}"> Zmieniono Trenera </span><br>
-    <span th:if="${trainerIsDeleted}"> Usunieto Trenera </span><br>
+    <span class="confirmation" th:if="${trainerIsAdded}"> Dodano Trenera </span><br>
+    <span class="confirmation" th:if="${trainerIsChanged}"> Zmieniono Trenera </span><br>
+    <span class="confirmation" th:if="${trainerIsDeleted}"> Usunieto Trenera </span><br>
     <a class="AddButton" href="/admin/addTrainer"> <img src="https://cdn1.iconfinder.com/data/icons/ui-colored-1/100/UI__2-512.png" title="Dodaj trenera" alt="Dodaj trenera"> </a>
 
     <table>
