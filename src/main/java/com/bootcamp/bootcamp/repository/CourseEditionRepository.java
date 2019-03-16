@@ -12,4 +12,6 @@ public interface CourseEditionRepository extends JpaRepository<CourseEdition, Lo
 
     List<CourseEdition> findAllByOrderByStartDate();
 
+    CourseEdition findByIdAndActiveIsTrue(Long id);
+
 }

@@ -33,25 +33,4 @@ public class CoursesController {
         model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
         return "courses";
     }
-
-    @RequestMapping(value = "/registeration", method = RequestMethod.GET)
-    public String getRegisteration(Model model) {
-        User user = new User();
-        model.addAttribute(user);
-        return "addNewUser";
-    }
-
-    @PostMapping("/saveUser")
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult blindingResult, Model model) {
-        if (blindingResult.hasErrors()) {
-            List<ObjectError> errors = blindingResult.getAllErrors();
-            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
-            return "/addNewUser";
-        } else{
-            userService.saveUser(user);
-            model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
-            return "courses";
-        }
-
-    }
 }

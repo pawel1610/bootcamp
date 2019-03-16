@@ -27,7 +27,7 @@ public class CourseEditionService {
     }
 
     public CourseEdition getCourseEditionToEdit(long id){
-        CourseEdition courseEdition = courseEditionRepository.findById(id).get();
+        CourseEdition courseEdition = courseEditionRepository.findByIdAndActiveIsTrue(id);
         return courseEdition;
     }
 }
