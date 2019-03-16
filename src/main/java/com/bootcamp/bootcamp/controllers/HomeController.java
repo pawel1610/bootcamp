@@ -17,6 +17,13 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/loginform")
+    public String loginForm() {
+        return "login_form";
+    }
+
+
+
 
 
 

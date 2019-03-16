@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BootCamp</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div id="main">
+    <header th:replace="fragments/header :: menu"></header>
+    <h1>Panel Logowania!!</h1>
+    <form th:action="@{/loginform}" method="post">
+        <input type="text" name="username" placeholder="E-mail" /> <br />
+        <input type="password" name="password" placeholder="Hasło" /> <br />
+        <input type="submit" value="Zaloguj" />
+    </form>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
+</body>
+
+
+</html>
