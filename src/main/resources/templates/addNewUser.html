@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowy Kursy</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div id="main">
+    <header th:replace="fragments/header :: menu"></header>
+    <h1>Nowy użytkownik</h1>
+
+
+
+    <form th:action="@{saveUser}" th:object="${user}" method="post">
+
+        <p th:errors="*" class="error" th:errorclass="form-field-error"></p>  <!-- wyswietlenie wszystkich bledow-->
+
+
+
+        <label for="name">Imie</label> <input id="name" type="text" placeholder="imię" th:field="*{name}"
+                                              th:class=${#fields.hasErrors('name')}?error/><br>
+        <label for="lastName">Nazwisko</label> <input id="lastName" type="text" placeholder="nazwisko" th:field="*{lastName}"
+                                                      th:class=${#fields.hasErrors('lastName')}?error/><br>
+        <label for="phone">Telefon</label> <input id="phone" type="text" placeholder="XXX-XXX-XXX" th:field="*{phone}"
+                                                  th:class=${#fields.hasErrors('phone')}?error/><br>
+        <label for="email">email</label> <input id="email" type="email" placeholder="xxx@xxx.pl" th:field="*{email}"
+                                                th:class=${#fields.hasErrors('email')}?error/><br>
+        <label for="password">haslo</label> <input id="password" type="text" placeholder="haslo" th:field="*{password}"
+                                                   th:class=${#fields.hasErrors('password')}?error/><br>
+
+        <label for="role">Typ</label>
+        <select th:field="*{role}" id="role">
+            <option th:each="role : ${roleList}" th:value="${role.id}" th:text="${role.role}"></option>
+        </select><br>
+        <input type="submit" value="zapisz"/>
+    </form>
+
+
+    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
+</body>
+</html>

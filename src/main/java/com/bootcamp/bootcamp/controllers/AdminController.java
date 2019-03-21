@@ -4,10 +4,8 @@ package com.bootcamp.bootcamp.controllers;
 import com.bootcamp.bootcamp.model.Course;
 import com.bootcamp.bootcamp.model.CourseEdition;
 import com.bootcamp.bootcamp.model.Trainer;
-import com.bootcamp.bootcamp.service.CourseEditionService;
-import com.bootcamp.bootcamp.service.CourseModeService;
-import com.bootcamp.bootcamp.service.CourseService;
-import com.bootcamp.bootcamp.service.TrainersService;
+import com.bootcamp.bootcamp.model.User;
+import com.bootcamp.bootcamp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +30,12 @@ public class AdminController {
 
     @Autowired
     private CourseModeService courseModeService;
+
+    @Autowired
+    private RoleService roleService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("")
     public String getAdmin() {
@@ -170,6 +174,27 @@ public class AdminController {
         model.addAttribute("courseModeList", courseModeService.getAllCourseMode());
         model.addAttribute("courseList", courseService.getAllCourses());
         return "addNewCourseEdition";
+    }
+
+    @GetMapping("/dodajUzytkownika")
+    public String addNewUser(Model model){
+        User newUser = new User();
+        model.addAttribute(newUser);
+        model.addAttribute("roleList", roleService.getAllRole());
+
+        return "addNewUser";
+    }
+
+    @PostMapping("/saveUser")
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult blindingResult,Model model) {
+        if (blindingResult.hasErrors()) {
+            List<ObjectError> errors = blindingResult.getAllErrors();
+            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
+            return "addNewUser";
+        } else{
+            userService.saveUserByAdmin(user);
+            return "admin";
+        }
     }
 
 
