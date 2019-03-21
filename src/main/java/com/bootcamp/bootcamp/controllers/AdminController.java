@@ -67,7 +67,6 @@ public class AdminController {
             model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName()); /// zdublowana funkcja ???????????
             return "trainersAdmin";
         }
-//        return "redirect:trenerzy";
 
     }
 
@@ -158,7 +157,6 @@ public class AdminController {
             } else {
                 model.addAttribute("courseEditionIsAdded", true);
             }
-
             courseEditionService.saveCourseEdition(courseEdition);
             model.addAttribute("courseEditionList", courseEditionService.getAllCourseEdition());
             return "courseEditionAdmin";

@@ -46,4 +46,8 @@ public class User {
     @NotEmpty
     private String password;
 
+//    @ManyToOne
+//    @JoinColumn(name = "courseEdition_id")
+//    private CourseEdition courseEdition;
+
 }

@@ -21,6 +21,8 @@
         <label for="">Wybrany Kurs</label>
         <input id="" readonly="readonly" th:value="${courseEdition.course.name} + ' ' + ${courseEdition.courseMode.name}">
 
+
+
         <label for="name">Imie</label> <input id="name" type="text" placeholder="imię" th:field="*{name}"
                                               th:class=${#fields.hasErrors('name')}?error/><br>
         <label for="lastName">Nazwisko</label> <input id="lastName" type="text" placeholder="nazwisko" th:field="*{lastName}"
