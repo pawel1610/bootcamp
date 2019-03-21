@@ -29,6 +29,8 @@ public class TrainersService {
         return trainerListSortedByLastName;
     }
 
+
+
     public void saveTrainer(Trainer trainer){
         trainerRepository.save(trainer);
     }
@@ -37,6 +39,10 @@ public class TrainersService {
         Optional<Trainer> trainerOptional= trainerRepository.findById(id);
         Trainer trainerToEdit = trainerOptional.get();
         return trainerToEdit;
+    }
+    public Trainer getTrainerByLastName(String lastName){
+        Trainer trainerByLastName= trainerRepository.getTrainerByLastName(lastName);
+        return trainerByLastName;
     }
 
     public void deletTrainer(Long id){

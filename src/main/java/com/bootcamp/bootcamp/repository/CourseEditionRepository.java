@@ -1,6 +1,7 @@
 package com.bootcamp.bootcamp.repository;
 
 import com.bootcamp.bootcamp.model.CourseEdition;
+import com.bootcamp.bootcamp.model.Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,7 @@ public interface CourseEditionRepository extends JpaRepository<CourseEdition, Lo
     List<CourseEdition> findAllByOrderByStartDate();
 
     CourseEdition findByIdAndActiveIsTrue(Long id);
+
+    List<CourseEdition> findAllByTrainer(Trainer trainer);
 
 }

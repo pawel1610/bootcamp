@@ -111,12 +111,10 @@ public class AdminController {
             } else {
                 model.addAttribute("courseIsAdded", true);
             }
-
             courseService.saveCourse(course);
             model.addAttribute("courseList", courseService.getAllCourses());
             return "coursesAdmin";
         }
-
     }
 
     @GetMapping("/editCourse")

@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated()
                 .antMatchers("/admin", "/admin/**").hasAuthority("admin")
                 .antMatchers("/userPanel", "/userPanel/**").hasAuthority("user")
+                .antMatchers("/trainerPanel", "/trainerPanel/**").hasAuthority("trainer")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

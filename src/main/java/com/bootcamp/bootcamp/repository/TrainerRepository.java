@@ -18,6 +18,9 @@ public interface  TrainerRepository extends JpaRepository<Trainer, Long> {
     @Query("SELECT t From Trainer t where t.lastName=:lastName order by lastName ASC")
     List<Trainer> getTrainersOrderByLastNameAsc(@Param("lastName") String lastName);
 
+    @Query("SELECT t From Trainer t where t.lastName=:lastName ")
+    Trainer getTrainerByLastName(@Param("lastName") String lastName);
+
 
 }
 

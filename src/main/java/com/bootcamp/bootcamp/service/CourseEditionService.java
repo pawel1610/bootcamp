@@ -2,11 +2,13 @@ package com.bootcamp.bootcamp.service;
 
 import com.bootcamp.bootcamp.model.Course;
 import com.bootcamp.bootcamp.model.CourseEdition;
+import com.bootcamp.bootcamp.model.Trainer;
 import com.bootcamp.bootcamp.repository.CourseEditionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 
@@ -22,12 +24,18 @@ public class CourseEditionService {
         return courseEditionRepository.findAllByOrderByStartDate();
     }
 
+
     public void saveCourseEdition(CourseEdition courseEdition){//
         courseEditionRepository.save(courseEdition);
     }
 
     public CourseEdition getCourseEditionToEdit(long id){
-        CourseEdition courseEdition = courseEditionRepository.findByIdAndActiveIsTrue(id);
+        Optional<CourseEdition> courseEditionOptional = courseEditionRepository.findById(id);
+        CourseEdition courseEdition = courseEditionOptional.get();
         return courseEdition;
+    }
+
+    public List<CourseEdition> getCourseEditionsByTrainer(Trainer trainer){
+        return courseEditionRepository.findAllByTrainer(trainer);
     }
 }

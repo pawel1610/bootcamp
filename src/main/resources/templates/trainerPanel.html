@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Twoje konto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div id="main">
+    <header th:replace="fragments/header :: menu"></header>
+    <h1>Twoje kursy</h1>
+
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Data Rozpoczecia</th>
+            <th>Data Zakonczenia</th>
+            <th>Cena</th>
+            <th>Liczba miejsc</th>
+            <th>Tryb</th>
+            <th>Trener prowadzący</th>
+            <th>Staus</th>            <
+        </tr>
+        <tr th:each="courseEdition : ${courseEditionList}">
+            <td>
+                <span th:text="${courseEdition.course.name}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.startDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.endDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.price}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.membersLimit}"></span>
+            </td>
+            <td>
+                <span th:text="${courseEdition.courseMode.name}"></span>
+            </td>
+            <td>
+                <a  th:href="@{editTrainer(id=${courseEdition.trainer.id})}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
+            </td>
+            <td>
+                <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>
+            </td>
+        </tr>
+    </table>
+
+    <footer th:replace="fragments/footer :: footer"></footer>
+</div>
+</body>
+</html>

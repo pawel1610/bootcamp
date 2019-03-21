@@ -20,4 +20,10 @@ public class UserService {
         user.setRole(roleService.getRoleUser());
         userRepository.save(user);
     }
+
+    public User getUserByEmail(String email){
+        User currentUser = userRepository.findByEmail(email);
+        return currentUser;
+    }
+
 }
