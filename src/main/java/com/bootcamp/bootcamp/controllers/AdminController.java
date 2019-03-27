@@ -181,7 +181,6 @@ public class AdminController {
         User newUser = new User();
         model.addAttribute(newUser);
         model.addAttribute("roleList", roleService.getAllRole());
-
         return "addNewUser";
     }
 

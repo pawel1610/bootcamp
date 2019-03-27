@@ -27,38 +27,6 @@ public class UserController {
 
 
 
-    @RequestMapping(value = "/registeration", method = RequestMethod.GET)
-    public String getRegisteration(@RequestParam(name = "id") Long id, Model model) {
-
-        if (courseEditionService.getCourseEditionToEdit(id) != null){
-            CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
-            User user = new User();
-            model.addAttribute(user);
-            model.addAttribute(courseEdition);
-            return "addUserToCourseEdition";
-        } else {
-            model.addAttribute("editionIsNotActive", true);
-            model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
-            return "courses";
-        }
-    }
-
-    @PostMapping("/saveUser/{id}")
-    public String saveUserToCourseEdition(@Valid @ModelAttribute User user, BindingResult blindingResult,
-                                          @PathVariable(name = "id") Long id,Model model) {
-        if (blindingResult.hasErrors()) {
-            List<ObjectError> errors = blindingResult.getAllErrors();
-            errors.forEach(err -> System.out.println(err.getDefaultMessage()));
-            CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
-            model.addAttribute(courseEdition);
-            return "addUserToCourseEdition";
-        } else{
-            userService.saveUser(user);
-            model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
-            return "userPanel";
-        }
-
-    }
     @GetMapping("/userPanel")
     public String showUserPanel() {
         return "userPanel";

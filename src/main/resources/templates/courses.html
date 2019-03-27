@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+
 <div id="main">
     <header th:replace="fragments/header :: menu"></header>
     <h1>Lista kursów</h1>
@@ -54,7 +55,10 @@
                 <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>
             </td>
             <td>
-                <a th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS</a>
+                <a sec:authorize="isAnonymous()" th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS</a>
+                <script></script>
+                <!--<a href="javascript:alert('Czy na pewno cchesz zapisac sie na ten kurs?');">Execute JavaScript</a>-->
+                <a sec:authorize="hasAuthority('user')" onClick="alert('Czy na pewno chesz zapisac sie na ten kurs?')" th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS</a>
             </td>
         </tr>
     </table>
