@@ -43,7 +43,7 @@ public class CourseRegisterationController {
                 return "addUserToCourseEdition";
             } else {
                 courseRegisterationService.saveUserToCourse(courseEdition, currentUser);
-                model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
+                model.addAttribute("listOfUserCourses", courseRegisterationService.getListOfUserCourses(currentUser));
                 return "userPanel";
             }
         } else {
@@ -66,7 +66,6 @@ public class CourseRegisterationController {
             userService.saveUser(user);
             CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
             courseRegisterationService.saveUserToCourse(courseEdition, user);
-            model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
             return "login_form";
         }
     }

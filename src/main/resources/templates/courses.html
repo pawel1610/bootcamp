@@ -56,8 +56,7 @@
                 <a sec:authorize="isAnonymous()" th:href="@{registeration(id=${courseEdition.id})}"
                    th:if="${courseEdition.active}" method="get">ZAPIS</a>
                 <script></script>
-                <!--<a href="javascript:alert('Czy na pewno cchesz zapisac sie na ten kurs?');">Execute JavaScript</a>-->
-                <a sec:authorize="hasAuthority('user')" onClick="alert('Czy na pewno chesz zapisac sie na ten kurs?')"
+                <a sec:authorize="hasAuthority('user')" onClick="confirm('Czy na pewno chesz zapisac sie na ten kurs ?')"
                    th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}"
                    method="get">Zapisz się</a>
             </td>

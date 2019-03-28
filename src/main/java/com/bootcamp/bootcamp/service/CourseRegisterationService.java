@@ -15,11 +15,16 @@ public class CourseRegisterationService {
     @Autowired
     CourseRegisterationRepository courseRegisterationRepository;
 
-    public void saveUserToCourse(CourseEdition courseEdition, User user) {
+    public Boolean saveUserToCourse(CourseEdition courseEdition, User user) {
         CourseRegisteration courseRegisteration = new CourseRegisteration();
         courseRegisteration.setCourseEdition(courseEdition);
         courseRegisteration.setUser(user);
-        courseRegisterationRepository.save(courseRegisteration);
+        if (courseRegisterationRepository.findAllByUserAndCourseEdition(user, courseEdition) == null){
+            courseRegisterationRepository.save(courseRegisteration);
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public List<CourseRegisteration> getListOfUserCourses(User user) {
