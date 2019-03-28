@@ -67,7 +67,7 @@ public class CourseRegisterationController {
             CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
             courseRegisterationService.saveUserToCourse(courseEdition, user);
             model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
-            return "userPanel";
+            return "login_form";
         }
     }
 }

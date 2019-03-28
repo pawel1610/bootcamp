@@ -9,6 +9,38 @@
 <div id="main">
     <header th:replace="fragments/header :: menu"></header>
     <h1>Twoje kursy</h1>
+
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Data Rozpoczecia</th>
+            <th>Data Zakonczenia</th>
+            <th>Cena</th>
+            <th>Tryb</th>
+            <th>Trener prowadzący</th>
+        </tr>
+        <tr th:each="courseRegisteration : ${listOfUserCourses}">
+            <td>
+                <span th:text="${courseRegisteration.courseEdition.course.name}"></span>
+            </td>
+            <td>
+                <span th:text="${courseRegisteration.courseEdition.startDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseRegisteration.courseEdition.endDate}"></span>
+            </td>
+            <td>
+                <span th:text="${courseRegisteration.courseEdition.price}"></span>
+            </td>
+            <td>
+                <span th:text="${courseRegisteration.courseEdition.courseMode.name}"></span>
+            </td>
+            <td>
+                <span th:text="${courseRegisteration.courseEdition.trainer.name} + ' ' + ${courseRegisteration.courseEdition.trainer.lastName}"></span>
+            </td>
+        </tr>
+    </table>
+
     <footer th:replace="fragments/footer :: footer"></footer>
 </div>
 </body>

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 //@RequestMapping(value = "bootcamp", method = RequestMethod.GET) - dodajemy gdy mamy wspolna czesc w adresie, zeby nei pisac ponizej
 public class HomeController {
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
 
     @GetMapping("/")
     public String getHome(){
@@ -21,10 +20,6 @@ public class HomeController {
     public String login() {
         return "login_form";
     }
-
-
-
-
 
 
 
