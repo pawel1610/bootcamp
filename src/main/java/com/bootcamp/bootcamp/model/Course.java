@@ -32,6 +32,4 @@ public class Course {
 
     @OneToMany
     private List<CourseEdition> editions;
-
-
 }

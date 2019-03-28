@@ -12,7 +12,9 @@
 
     <span class="confirmation" th:if="${courseEditionIsAdded}"> Dodano Edycję Kursu </span><br>
     <span class="confirmation" th:if="${courseEditionIsChanged}"> Zmieniono Edycję Kursu </span><br>
-    <a class="AddButton" href="/admin/addCourseEdition"> <img src="https://cdn1.iconfinder.com/data/icons/ui-colored-1/100/UI__2-512.png" title="Dodaj edycje kurs" alt="Dodaj edycje kurs"></a>
+    <a class="AddButton" href="/admin/addCourseEdition"> <img
+            src="https://cdn1.iconfinder.com/data/icons/ui-colored-1/100/UI__2-512.png" title="Dodaj edycje kursu"
+            alt="Dodaj edycje kursu"></a>
 
     <table>
         <tr>
@@ -46,7 +48,8 @@
                 <span th:text="${courseEdition.courseMode.name}"></span>
             </td>
             <td>
-                <a  th:href="@{editTrainer(id=${courseEdition.trainer.id})}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
+                <a th:href="@{editTrainer(id=${courseEdition.trainer.id})}"
+                   th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
             </td>
             <td>
                 <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>

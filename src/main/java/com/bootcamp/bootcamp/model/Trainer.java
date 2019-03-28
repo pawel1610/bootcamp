@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.domain.Sort;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -21,7 +19,7 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Trainer{
+public class Trainer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,23 +28,20 @@ public class Trainer{
     @NotBlank(message = "{com.bootcamp.bootcamp.model.Trainer.name.NotBlank}")
     private String name;
 
-    @NotEmpty (message = "{com.bootcamp.bootcamp.model.Trainer.lastName.NotEmpty}")
+    @NotEmpty(message = "{com.bootcamp.bootcamp.model.Trainer.lastName.NotEmpty}")
     private String lastName;
 
 
     @Min(value = 1, message = "{com.bootcamp.bootcamp.model.Trainer.salary.Min}")
     private int salary;
 
-    @NotEmpty (message = "{com.bootcamp.bootcamp.model.Trainer.description.NotEmpty}")
+    @NotEmpty(message = "{com.bootcamp.bootcamp.model.Trainer.description.NotEmpty}")
     private String description;
-
-
 
     @Override
     public String toString() {
         return "Trener " + name + " " +
-                lastName ;
+                lastName;
     }
-
 
 }

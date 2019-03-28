@@ -21,6 +21,5 @@ public interface  TrainerRepository extends JpaRepository<Trainer, Long> {
     @Query("SELECT t From Trainer t where t.lastName=:lastName ")
     Trainer getTrainerByLastName(@Param("lastName") String lastName);
 
-
 }
 

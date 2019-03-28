@@ -18,26 +18,24 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
 
-    @RequestMapping(value = "/kontakt", method = RequestMethod.GET)
-    public String contact(Model model){
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    public String contact(Model model) {
         Contact contact = new Contact();
         model.addAttribute(contact);
         return "contact";
     }
 
-    @RequestMapping(value = "/wyslano", method = RequestMethod.POST)
-    public String getMessage(@Valid @ModelAttribute Contact contact,BindingResult bindingResulat, Model model){  //@Valid - okresla ze obiekt contact bedzie walidowany,
-        // Binding przechwytuje wynik walidacji - bindong musi byc po elelmncie walidowanym
+    @RequestMapping(value = "/sent", method = RequestMethod.POST)
+    public String getMessage(@Valid @ModelAttribute Contact contact, BindingResult bindingResulat, Model model) {  //@Valid - okresla ze obiekt contact bedzie walidowany,
+        // Binding przechwytuje wynik walidacji - binding musi byc po elemencie walidowanym
         // @ModelAttribute lapiemy caly model z formularza
-
         if (bindingResulat.hasErrors()) {
             List<ObjectError> errors = bindingResulat.getAllErrors();
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
-        }else {
+        } else {
             model.addAttribute("sentMessage", true);
             contactService.saveContact(contact);
         }
-//        model.addAttribute("contact", new Contact());
         return "contact";
     }
 

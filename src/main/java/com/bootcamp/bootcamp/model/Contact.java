@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +11,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Data
@@ -25,8 +22,7 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-//    https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/package-summary.html  --  lista dostepnych validacji
+    //    https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/package-summary.html  --  lista dostepnych validacji
     @NotEmpty(message = "Proszę podac swoje imie")
     private String name;
 
@@ -40,7 +36,6 @@ public class Contact {
     private String message;
 
     private LocalDateTime data;
-
 
     public void setData(LocalDateTime data) {
         this.data = data;

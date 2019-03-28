@@ -3,35 +3,32 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 
-
 <body>
+
 <nav th:fragment="menu"> <!--okreslamy ktory fragment ma byc wkljony w innych html'ach-->
     <img src="https://www.geeksforgeeks.org/wp-content/uploads/Java-768x256.png" alt="java">
     <a href="/">Strona głowna</a>
-    <a href="/o-nas">O-nas</a>
-    <a href="/trenerzy">Trenerzy</a>
-    <a href="/kursy">Kursy</a>
-    <a href="/kontakt">Kontakt</a>
-    <a sec:authorize="hasAuthority('user')"href="/userPanel">Panel Kursanta</a>
-    <a sec:authorize="hasAuthority('admin')"href="/admin">Panel Administratora</a>
-    <a sec:authorize="hasAuthority('trainer')"href="/trainerPanel">Panel Trenera</a>
+    <a href="/about">O-nas</a>
+    <a href="/trainers">Trenerzy</a>
+    <a href="/courses">Kursy</a>
+    <a href="/contact">Kontakt</a>
+    <a sec:authorize="hasAuthority('user')" href="/userPanel">Panel Kursanta</a>
+    <a sec:authorize="hasAuthority('admin')" href="/admin">Panel Administratora</a>
+    <a sec:authorize="hasAuthority('trainer')" href="/trainerPanel">Panel Trenera</a>
     <a sec:authorize="!isAuthenticated()" href="/login">Zaloguj</a>
     <a sec:authorize="isAuthenticated()" href="/logout">Wyloguj</a>
-
-
 </nav>
 
-<nav th:fragment="menuAdmin"> <!--okreslamy ktory fragment ma byc wklejony w innych html'ach-->
 
-
+<nav th:fragment="menuAdmin">
     <img src="https://www.geeksforgeeks.org/wp-content/uploads/Java-768x256.png" alt="java">
     <a href="/">Menu glowne</a>
-    <a href="/admin/trenerzy">Trenerzy</a>
-    <a href="/admin/kursy">Kursy</a>
-    <a href="/admin/edycjeKursow">Edycje Kursów</a>
-    <a href="/admin/dodajUzytkownika">Dodaj użytkownika</a>
+    <a href="/admin/trainers">Trenerzy</a>
+    <a href="/admin/courses">Kursy</a>
+    <a href="/admin/courseEdition">Edycje Kursów</a>
+    <a href="/admin/addNewUser">Dodaj użytkownika</a>
     <span sec:authorize="isAuthenticated()"></span><a href="/logout">Wyloguj</a>
-
 </nav>
+
 </body>
 </html>

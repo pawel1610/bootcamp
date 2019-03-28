@@ -1,6 +1,6 @@
 package com.bootcamp.bootcamp.service;
 
-import com.bootcamp.bootcamp.model.Course;
+
 import com.bootcamp.bootcamp.model.CourseEdition;
 import com.bootcamp.bootcamp.model.Trainer;
 import com.bootcamp.bootcamp.repository.CourseEditionRepository;
@@ -20,10 +20,10 @@ public class CourseEditionService {
     public List<CourseEdition> getAllCourseEdition(){
         return courseEditionRepository.findAll();
     }
+
     public List<CourseEdition> getAllCourseEditionSortedtByStartDate(){
         return courseEditionRepository.findAllByOrderByStartDate();
     }
-
 
     public void saveCourseEdition(CourseEdition courseEdition){//
         courseEditionRepository.save(courseEdition);

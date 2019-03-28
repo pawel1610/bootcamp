@@ -12,7 +12,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Entity
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -45,9 +44,5 @@ public class User {
 
     @NotEmpty
     private String password;
-
-//    @ManyToOne
-//    @JoinColumn(name = "courseEdition_id")
-//    private CourseEdition courseEdition;
 
 }

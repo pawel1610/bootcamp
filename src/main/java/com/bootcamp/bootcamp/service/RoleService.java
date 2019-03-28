@@ -13,12 +13,12 @@ public class RoleService {
     RoleRepository roleRepository;
 
 
-    public Role getRoleUser(){
+    public Role getRoleUser() {
         Role role = roleRepository.findAllByRole("user");
         return role;
     }
 
-    public List<Role> getAllRole(){
+    public List<Role> getAllRole() {
         List<Role> allRole = roleRepository.findAll();
         return allRole;
     }

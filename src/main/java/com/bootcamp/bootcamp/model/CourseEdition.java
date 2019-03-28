@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
@@ -30,10 +28,8 @@ public class CourseEdition {
     @NotNull
     private Course course; // tzw klucz obcy
 
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
-
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
@@ -47,13 +43,12 @@ public class CourseEdition {
     @ManyToOne
     @JoinColumn(name = "courseMode_id")
     @NotNull
-    private CourseMode courseMode; // tzw klucz obcy
+    private CourseMode courseMode;
 
     @ManyToOne
     @JoinColumn(name = "trainer_id")
     @NotNull
     private Trainer trainer;
-
 
     private boolean active;
 

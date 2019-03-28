@@ -10,8 +10,8 @@
 <div id="main">
     <header th:replace="fragments/header :: menu"></header>
     <h1>Lista kursów</h1>
-
     <span class="confirmation" th:if="${editionIsNotActive}"> Rekrutacja zakończona </span><br>
+
     <table>
         <tr>
             <th>Nazwa</th>
@@ -23,7 +23,6 @@
             <th>Tryb</th>
             <th>Staus</th>
             <th></th>
-
         </tr>
         <tr th:each="courseEdition : ${courseEditionList}">
             <td>
@@ -42,11 +41,10 @@
                 <span th:text="${courseEdition.price}"></span>
             </td>
             <td>
-                <a sec:authorize="isAuthenticated()" th:href="@{admin/editTrainer(id=${courseEdition.trainer.id})}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
-                <!--<a sec:authorize="hasAuthority('Admin')" th:href="@{admin/editTrainer(id=${courseEdition.trainer.id})}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>-->
-                <a sec:authorize="isAnonymous()" th:href="'trenerzy/'+${courseEdition.trainer.id}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
-
-
+                <a sec:authorize="isAuthenticated()" th:href="@{admin/editTrainer(id=${courseEdition.trainer.id})}"
+                   th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
+                <a sec:authorize="isAnonymous()" th:href="'trenerzy/'+${courseEdition.trainer.id}"
+                   th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
             </td>
             <td>
                 <span th:text="${courseEdition.courseMode.name}"></span>
@@ -55,13 +53,17 @@
                 <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>
             </td>
             <td>
-                <a sec:authorize="isAnonymous()" th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS</a>
+                <a sec:authorize="isAnonymous()" th:href="@{registeration(id=${courseEdition.id})}"
+                   th:if="${courseEdition.active}" method="get">ZAPIS</a>
                 <script></script>
                 <!--<a href="javascript:alert('Czy na pewno cchesz zapisac sie na ten kurs?');">Execute JavaScript</a>-->
-                <a sec:authorize="hasAuthority('user')" onClick="alert('Czy na pewno chesz zapisac sie na ten kurs?')" th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}" method="get">ZAPIS</a>
+                <a sec:authorize="hasAuthority('user')" onClick="alert('Czy na pewno chesz zapisac sie na ten kurs?')"
+                   th:href="@{registeration(id=${courseEdition.id})}" th:if="${courseEdition.active}"
+                   method="get">Zapisz się</a>
             </td>
         </tr>
     </table>
+
     <footer th:replace="fragments/footer :: footer"></footer>
 </div>
 </body>

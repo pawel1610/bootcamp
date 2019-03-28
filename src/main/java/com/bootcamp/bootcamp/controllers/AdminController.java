@@ -19,6 +19,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "admin", method = RequestMethod.GET)
 public class AdminController {
+
     @Autowired
     private TrainersService trainersService;
 
@@ -42,7 +43,7 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("/trenerzy")
+    @GetMapping("/trainers")
     public String getTrenerzyAdmin(Model model) {
         model.addAttribute("trainersListSortedByLastName", trainersService.getTrainersSortedByLastName());
         return "trainersAdmin";
@@ -90,7 +91,7 @@ public class AdminController {
         return "trainersAdmin";
     }
 
-    @GetMapping("/kursy")
+    @GetMapping("/courses")
     public String getCoursesAdmin(Model model) {
         model.addAttribute("courseList", courseService.getAllCourses());
         return "coursesAdmin";
@@ -128,14 +129,14 @@ public class AdminController {
         return "addNewCourse";
     }
 
-    @GetMapping("/edycjeKursow")
+    @GetMapping("/courseEdition")
     public String getCourseEditionAdmin(Model model) {
         model.addAttribute("courseEditionList", courseEditionService.getAllCourseEdition());
         return "courseEditionAdmin";
     }
 
     @GetMapping("/addCourseEdition")
-    public String getAddCourseEdition(Model model) {
+    public String addCourseEdition(Model model) {
         CourseEdition courseEdition = new CourseEdition();
         model.addAttribute(courseEdition);
         model.addAttribute("trainerList", trainersService.getTrainers());
@@ -176,8 +177,8 @@ public class AdminController {
         return "addNewCourseEdition";
     }
 
-    @GetMapping("/dodajUzytkownika")
-    public String addNewUser(Model model){
+    @GetMapping("/addNewUser")
+    public String addNewUser(Model model) {
         User newUser = new User();
         model.addAttribute(newUser);
         model.addAttribute("roleList", roleService.getAllRole());
@@ -185,16 +186,14 @@ public class AdminController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult blindingResult,Model model) {
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult blindingResult, Model model) {
         if (blindingResult.hasErrors()) {
             List<ObjectError> errors = blindingResult.getAllErrors();
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
             return "addNewUser";
-        } else{
+        } else {
             userService.saveUserByAdmin(user);
             return "admin";
         }
     }
-
-
 }

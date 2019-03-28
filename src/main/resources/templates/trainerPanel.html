@@ -19,7 +19,8 @@
             <th>Liczba miejsc</th>
             <th>Tryb</th>
             <th>Trener prowadzący</th>
-            <th>Staus</th>            <
+            <th>Staus</th>
+            <
         </tr>
         <tr th:each="courseEdition : ${courseEditionList}">
             <td>
@@ -41,7 +42,8 @@
                 <span th:text="${courseEdition.courseMode.name}"></span>
             </td>
             <td>
-                <a  th:href="@{editTrainer(id=${courseEdition.trainer.id})}" th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
+                <a th:href="@{editTrainer(id=${courseEdition.trainer.id})}"
+                   th:text="${courseEdition.trainer.name} + ' ' + ${courseEdition.trainer.lastName}"></a>
             </td>
             <td>
                 <span th:text="${courseEdition.active}?'Reakrutacja aktywna' : 'Rektutacja zakończona'"></span>

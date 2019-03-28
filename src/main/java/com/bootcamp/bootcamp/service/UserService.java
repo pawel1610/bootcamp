@@ -12,21 +12,23 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired RoleService roleService;
+    @Autowired
+    RoleService roleService;
 
-    public void saveUser(User user){
+    public void saveUser(User user) {
         PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole(roleService.getRoleUser());
         userRepository.save(user);
     }
-    public void saveUserByAdmin(User user){
+
+    public void saveUserByAdmin(User user) {
         PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
-    public User getUserByEmail(String email){
+    public User getUserByEmail(String email) {
         User currentUser = userRepository.findByEmail(email);
         return currentUser;
     }

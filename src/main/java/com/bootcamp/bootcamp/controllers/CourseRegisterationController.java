@@ -1,7 +1,6 @@
 package com.bootcamp.bootcamp.controllers;
 
 import com.bootcamp.bootcamp.model.CourseEdition;
-import com.bootcamp.bootcamp.model.CourseRegisteration;
 import com.bootcamp.bootcamp.model.User;
 import com.bootcamp.bootcamp.service.CourseEditionService;
 import com.bootcamp.bootcamp.service.CourseRegisterationService;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
 @Controller
 public class CourseRegisterationController {
 
@@ -32,18 +32,17 @@ public class CourseRegisterationController {
 
     @RequestMapping(value = "/registeration", method = RequestMethod.GET)
     public String getRegisteration(@RequestParam(name = "id") Long id, Model model) {
-
-        if (courseEditionService.getCourseEditionToEdit(id) != null){
+        if (courseEditionService.getCourseEditionToEdit(id) != null) {
             CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             User currentUser = userService.getUserByEmail(authentication.getName());
-            if (currentUser == null){
+            if (currentUser == null) {
                 User user = new User();
                 model.addAttribute(user);
                 model.addAttribute(courseEdition);
                 return "addUserToCourseEdition";
-            }else{
-                courseRegisterationService.saveUserToCourse(courseEdition,currentUser);
+            } else {
+                courseRegisterationService.saveUserToCourse(courseEdition, currentUser);
                 model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
                 return "userPanel";
             }
@@ -54,7 +53,6 @@ public class CourseRegisterationController {
         }
     }
 
-
     @PostMapping("/saveUser/{id}")
     public String saveUserToCourseEdition(@Valid @ModelAttribute User user, BindingResult blindingResult,
                                           @PathVariable(name = "id") Long id, Model model) {
@@ -64,14 +62,12 @@ public class CourseRegisterationController {
             CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
             model.addAttribute(courseEdition);
             return "addUserToCourseEdition";
-        } else{
+        } else {
             userService.saveUser(user);
             CourseEdition courseEdition = courseEditionService.getCourseEditionToEdit(id);
-            courseRegisterationService.saveUserToCourse(courseEdition,user);
+            courseRegisterationService.saveUserToCourse(courseEdition, user);
             model.addAttribute(courseEditionService.getAllCourseEditionSortedtByStartDate());
             return "userPanel";
         }
-
     }
-
 }

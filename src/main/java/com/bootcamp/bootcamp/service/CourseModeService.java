@@ -8,13 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
-public class CourseModeService  {
+public class CourseModeService {
 
     @Autowired
     CourseModeRepository courseModeRepository;
 
-    public List<CourseMode> getAllCourseMode(){
+    public List<CourseMode> getAllCourseMode() {
         return courseModeRepository.findAll();
     }
 }
